@@ -12,6 +12,7 @@ blocks:
         - name: heroku
       env_vars:
         - name: HEROKU_APP_NAME
+          # TODO: set your app name here
           value: semaphore2-example-heroku
       jobs:
       - name: Push to Heroku
