@@ -1,0 +1,20 @@
+version: "v1.0"
+name: First pipeline example
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Deploy"
+    task:
+      secrets:
+        - name: heroku
+      env_vars:
+        - name: HEROKU_APP_NAME
+          value: semaphore2-heroku-example
+      jobs:
+      - name: Push to Heroku
+        commands:
+          - checkout
+          - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
